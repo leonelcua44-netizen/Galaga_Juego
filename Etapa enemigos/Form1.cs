@@ -416,7 +416,95 @@ namespace Juego2
                     }
                 }
             }
+
+
+            for (int i = 0;
+        i < municiones.Length;
+        i++)
+            {
+                if (municiones[i].Visible)
+                {
+                 
+                    // MOVER MUNICIÓN HACIA ARRIBA
+                  
+
+                    municiones[i].Top -=
+                        municionesSpeed;
+
+
+                    
+                    // COLISIÓN MUNICIÓN - ENEMIGO
+                  
+
+                    for (int j = 0;
+                        j < enemigos.Length;
+                        j++)
+                    {
+                        if (
+                            municiones[i].Visible &&
+                            enemigos[j].Visible &&
+                            municiones[i].Bounds.IntersectsWith(
+                                enemigos[j].Bounds
+                            )
+                        )
+                        {
+                            
+                            // OCULTAR MUNICIÓN
+                          
+
+                            municiones[i].Visible =
+                                false;
+
+
+                            
+                            // OCULTAR ENEMIGO
+                            
+
+                            enemigos[j].Visible =
+                                false;
+
+
+                            // REAPARECER ENEMIGO ARRIBA
+                      
+
+                            enemigos[j].Top =
+                                -enemigos[j].Height;
+
+                            enemigos[j].Left =
+                                rnd.Next(
+                                    20,
+                                    this.ClientSize.Width - 70
+                                );
+
+
+                         
+                            // VOLVER A MOSTRAR ENEMIGO
+                        
+
+                            enemigos[j].Visible =
+                                true;
+
+
+                            // Salir del ciclo de enemigos
+                            break;
+                        }
+                    }
+
+
+                 
+                    // SI LA MUNICIÓN SALE DE LA PANTALLA
+                   
+
+                    if (municiones[i].Bottom < 0)
+                    {
+                        municiones[i].Visible =
+                            false;
+                    }
+                }
+            }
         }
+
+
 
 
         private void CrearEnemigos()
@@ -477,19 +565,48 @@ namespace Juego2
     EventArgs e)
         {
             for (int i = 0;
-                i < enemigos.Length;
-                i++)
+        i < enemigos.Length;
+        i++)
             {
                 if (!enemigos[i].Visible)
                 {
                     continue;
                 }
 
+
+       
+                // MOVER ENEMIGO HACIA ABAJO
+               
+
                 enemigos[i].Top +=
                     enemigosSpeed;
 
-                if (enemigos[i].Top >=
-                    this.ClientSize.Height)
+
+         
+                // COLISIÓN ENEMIGO - PLAYER
+              
+
+                if (
+                    Player.Visible &&
+                    enemigos[i].Bounds.IntersectsWith(
+                        Player.Bounds
+                    )
+                )
+                {
+                    DestruirJugador();
+
+                    return;
+                }
+
+
+              
+                // SI EL ENEMIGO SALE DE LA PANTALLA
+              
+
+                if (
+                    enemigos[i].Top >=
+                    this.ClientSize.Height
+                )
                 {
                     enemigos[i].Top =
                         -enemigos[i].Height;
@@ -507,7 +624,61 @@ namespace Juego2
         {
 
         }
+
+        private void DestruirJugador()
+        {
+           
+            // OCULTAR PLAYER
+            
+
+            Player.Visible =
+                false;
+
+
+           
+            // DETENER MOVIMIENTO DEL PLAYER
+     
+
+            DerechaTimer.Stop();
+            IzquierdaTimer.Stop();
+            ArribaTimer.Stop();
+            AbajoTimer.Stop();
+
+
+            // DETENER ENEMIGOS
+            
+
+            MoverEnemigos.Stop();
+
+
+            
+            // DETENER MUNICIONES
+         
+
+            MoverMunicion.Stop();
+
+
+            
+            // DETENER FONDO
+            
+
+            MoverBgTimer.Stop();
+
+
+            
+            // GAME OVER
+          
+
+            MessageBox.Show(
+                "¡Game Over!",
+                "Galaga",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
     }
+
 
 
 
