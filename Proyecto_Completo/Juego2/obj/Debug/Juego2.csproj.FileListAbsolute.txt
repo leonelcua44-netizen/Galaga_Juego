@@ -1,0 +1,13 @@
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.csproj.AssemblyReference.cache
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.Form1.resources
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.Properties.Resources.resources
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.csproj.GenerateResource.cache
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.csproj.CoreCompileInputs.cache
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Juego2.exe.config
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Juego2.exe
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Juego2.pdb
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.exe
+C:\Users\Tito0\source\repos\Juego2\Juego2\obj\Debug\Juego2.pdb
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Asserts\munition.png
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Asserts\Boss1.png
+C:\Users\Tito0\source\repos\Juego2\Juego2\bin\Debug\Asserts\Boss2.png
